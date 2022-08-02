@@ -1,0 +1,47 @@
+Question: You are given two non-empty Linked Lists representing two non-negative integers. The digits are stored in reverse order, and each of their nodes contain a single digit.Add two numbers and return the sum as linked List.
+
+e.g. Linked List 1 = (2)➣(4)➢(3)
+     Linked List 2 = (5)➢(6)➢(4)
+     
+     Output = [2, 4, 3] = 3 4 2
+                [5, 6, 4] = 4 6 5
+                3 4 2 + 4 6 5 = 8 0 7 
+                means : (7)➢(0)➢(8)
+                
+     Algorithm:
+      Just like the sum of two numbers on a piece of paper, we begin by summing the last-significant digits, which is the head of L1 and L2. Since each didgit is in the range of  0.......9, summing two digits may "overflow". For example 5+7=12. In this case, we set the current digit to 2 and bring over the carry = 1 to the current digit to 2 and bring over the carry must be either 0 or 1 because the largest possible sum of two digits(including the carry) is 9  + 9 + 1 = 19.
+      
+      Pseudocode:
+        ・Initiaise current node to dummy head of the returning list.
+        ・Initialise carry to 0 
+        ・Loop through the Lists L1 and L2 until you reach both ends and carry is 0
+        ・Set x to node L1 value, If L1 has reached the end of L1, set to 0.
+        ・Set y to node L2 value, If has reached the end of L2, set to 0.
+        ・Set sum = x + y + carry 
+        ・Update carry = sum/10
+        ・Create a new node with the digit value of(Sum and 10) and set it to current node's next, then advance current node to next.
+        ・Advance both L1 and L2
+        ・Return dummy Head's next node
+        
+        
+     Solution:
+            Class Solution{
+                public ListNode addTwoNumbers(ListNodeL1, ListNodeL2){
+                ListNode dummyHead = newListNode(0);
+                ListNode curr = dummyHead;
+                int carry = 0;
+                while(L1 != null || L2 != null || carry != 0){
+                    int x = (L1 != null)?L1.val:0;
+                    int y = (L2 != null)?L2.val:0;
+                    int sum = carry + x + y;
+                    carry = sum/10;
+                    curr.next = newListNode(sum%10);
+                    curr = curr.next;
+                    if(L1 != null)
+                        L1 = L1.next;
+                    if(L2 != null)
+                        L2 = L2.next;
+                    }
+                    return dummyHead.next;
+                    }}
+                  
