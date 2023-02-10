@@ -2,9 +2,8 @@
 ## Click here for more!
 
 
-_hey there,_
 
-* I'm into Leetcode currently and posting the same solutions in my repo.
+* I will be uploading solutions of problems from gfg, leetcode and hackerrank.
 * 🗝️Consistency is the key.
 
-_Do check it out if you need and ping me to update my repo._
+_Do give it a star and check it out if you need then ping me to update my repo._
